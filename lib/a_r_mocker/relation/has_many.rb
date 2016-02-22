@@ -1,10 +1,12 @@
-module Assays
-  module Mock
+module ARMocker
+  module Relation
+    # A wrapper for models intended to act as an ActiveRecord::Relation
+    # for a has_many relationship
     class HasMany
       include Enumerable
 
       def initialize(members)
-        @members = members
+        @members = members.is_a?(ARMocker::Models) ? members.to_a : members
       end
 
       def each(&block)
@@ -34,7 +36,7 @@ module Assays
       end
 
       private def new_member(attributes = {})
-        Assays::Mock::Model.new(attributes.merge(persisted: attributes.delete(:persisted)))
+        Model.new(attributes.merge(persisted: attributes.delete(:persisted)))
       end
     end
   end
