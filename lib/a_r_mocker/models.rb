@@ -8,8 +8,12 @@ module ARMocker
     # @param persisted [Boolean] whether the models will act as though they
     # have persisted
     # @param attributes [Hash] attributes to be applied to every model
-    def initialize(count, persisted, attributes = {})
-      @members = Array.new(count, ARMocker::Model.new(attributes.merge(persisted: persisted)))
+    def initialize(count, attributes = {})
+      @members = Array.new(count, ARMocker::Model.new(attributes.merge(persisted: attributes.delete(:_persisted))))
+    end
+
+    def self.create(count, attributes = {})
+      new(count, attributes.merge(_persisted: true))
     end
 
     def to_a

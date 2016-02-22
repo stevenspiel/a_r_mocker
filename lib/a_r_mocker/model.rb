@@ -3,9 +3,13 @@ module ARMocker
   # them as dummy data
   class Model < OpenStruct
     def initialize(hash = {})
-      @persisted = hash.delete(:persisted)
+      @persisted = hash.delete(:_persisted)
       hash = default_attributes.merge(hash)
       super
+    end
+
+    def self.create(hash = {})
+      new(hash.merge(_persisted: true))
     end
 
     private def default_attributes
