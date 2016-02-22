@@ -3,7 +3,6 @@ require 'a_r_mocker/version'
 require 'a_r_mocker/models'
 require 'a_r_mocker/model'
 require 'a_r_mocker/relation'
-require 'a_r_mocker/relation/has_many'
 
 module ARMocker
 end
