@@ -5,11 +5,10 @@ module ARMocker
     include Enumerable
 
     # @param count [Integer] the number of models to be generated
-    # @param persisted [Boolean] whether the models will act as though they
     # have persisted
     # @param attributes [Hash] attributes to be applied to every model
     def initialize(count, attributes = {})
-      @members = Array.new(count, ARMocker::Model.new(attributes.merge(persisted: attributes.delete(:_persisted))))
+      @members = Array.new(count, ARMocker::Model.new(attributes.merge(persisted: attributes.slice(:_persisted))))
     end
 
     def self.create(count, attributes = {})
