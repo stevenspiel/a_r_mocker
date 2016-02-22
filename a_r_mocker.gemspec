@@ -11,7 +11,8 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Mocks ActiveRecord models and relationships for form objects.'
   spec.description   = "Create relationships and models that work with form objects and don't dependant on a database schema."
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/stevenspiel/a_r_mocker'
+  spec.licenses      = ['MIT']
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
